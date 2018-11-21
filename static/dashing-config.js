@@ -16,7 +16,7 @@ dashboard.addWidget('current_valuation_widget', 'Number', {
             detail: '64%',
             value: '$35'
         });
-    }
+    } 
 });
  
 dashboard.addWidget('buzzwords_widget', 'List', {
