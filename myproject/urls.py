@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
- 
 from dashing.utils import router
 from django.views.generic.base import RedirectView
-from .widgets import CustomDashboard, MyCustomWidget
 
+from .widgets import CustomDashboard, MyCustomWidget
+from rest_framework import routers
+from apiv1 import views
+
+
+router = routers.DefaultRouter()
+router.register(r'persons', views.PersonViewSet)
 
 dashboard_patterns = [
 
@@ -28,7 +33,14 @@ dashboard_patterns = [
     url(r'^$', RedirectView.as_view(url='dashboard/'), name='index'),
 ]
  
+api_patterns = [
+    url(r'^', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+
+]
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include(dashboard_patterns), name='index'),
+    url(r'^apiv1/', include(api_patterns), name='index'),
 ]
