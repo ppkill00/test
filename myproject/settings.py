@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'dashing',
     'rest_framework',
     'apiv1',
+    'apiv1',    
 ]
 
 REST_FRAMEWORK = {
