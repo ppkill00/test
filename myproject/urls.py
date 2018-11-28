@@ -24,7 +24,7 @@ from apiv1 import views
 
 
 router = routers.DefaultRouter()
-router.register(r'persons', views.PersonViewSet)
+router.register(r'alertSystem', views.AlertViewSet)
 
 dashboard_patterns = [
 
