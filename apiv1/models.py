@@ -5,3 +5,5 @@ from django.db import models
 class Alert(models.Model):
     server = models.CharField(max_length=30)
     message = models.CharField(max_length=30)
+    ipAddress = models.GenericIPAddressField()
+    time = models.DateTimeField(auto_now_add=True)

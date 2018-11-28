@@ -8,5 +8,5 @@ from rest_framework import serializers
 class AlertSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Alert
-        fields = ('server', 'message')
+        fields = ('server', 'message','time','ipAddress')
 
