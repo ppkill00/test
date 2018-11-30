@@ -22,15 +22,16 @@ from .widgets import CustomDashboard, MyCustomWidget
 from rest_framework import routers
 from apiv1 import views
 
+from dashboard.views import index, gentella_html
+
 
 router = routers.DefaultRouter()
 router.register(r'alertSystem', views.AlertViewSet)
 
-dashboard_patterns = [
-
+dashing_patterns = [
+    url(r'^$', RedirectView.as_view(url='dashboard/'), name='index'),
     url(r'dashboard/$', CustomDashboard.as_view()),
     url(r'dashboard/widgets/new_users_widget/', MyCustomWidget.as_view(), name='widget_new_users_widget'),
-    url(r'^$', RedirectView.as_view(url='dashboard/'), name='index'),
 ]
  
 api_patterns = [
@@ -39,8 +40,14 @@ api_patterns = [
 
 ]
 
+dashboard_patterns = [
+    url(r'^$', index, name='index'),
+    url(r'^.*\.html', gentella_html, name='gentella'),
+]
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'', include(dashboard_patterns), name='index'),
-    url(r'^apiv1/', include(api_patterns), name='index'),
+    url(r'^dashing/', include(dashing_patterns), name='dashing_patterns'),
+    url(r'^apiv1/', include(api_patterns), name='api_patterns'),
+    url(r'^dashboard/', include(dashboard_patterns), name='dashboard_patterns'),
 ]

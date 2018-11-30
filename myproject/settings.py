@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'dashing',
     'rest_framework',
     'apiv1',
+    'dashboard'
 ]
 
 REST_FRAMEWORK = {
@@ -50,6 +51,7 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 10
 }
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,7 +68,8 @@ ROOT_URLCONF = 'myproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR + 'templates/'), ],
+        'DIRS': [],
+        #'DIRS': [os.path.join(BASE_DIR + 'templates/'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,4 +139,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+#STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
+
